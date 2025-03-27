@@ -47,13 +47,13 @@ function UserList() {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>User List</h2>
-      <button onClick={handleLogout} style={{ marginBottom: "20px" }}>Logout</button>
-      <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap" }}>
+    <div style={styles.container}>
+      <button onClick={handleLogout} style={styles.logoutButton}>Logout</button>
+      <h2 style={styles.title}>User List</h2>
+      <div style={styles.userContainer}>
         {users.map(user => (
-          <div key={user.id} style={{ border: "1px solid #ddd", padding: "10px", margin: "10px", borderRadius: "5px", width: "250px" }}>
-            <img src={user.avatar} alt="Avatar" width="80" height="80" style={{ borderRadius: "50%" }} />
+          <div key={user.id} style={styles.userCard}>
+            <img src={user.avatar} alt="Avatar" style={styles.avatar} />
             {editingUser === user.id ? (
               <>
                 <input type="text" value={editedData.first_name} onChange={(e) => setEditedData({ ...editedData, first_name: e.target.value })} />
@@ -73,13 +73,78 @@ function UserList() {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: "20px" }}>
+      <div style={styles.pagination}>
         <button onClick={() => setPage(page - 1)} disabled={page === 1}>Previous</button>
-        <span style={{ margin: "0 10px" }}>Page {page}</span>
+        <span>Page {page}</span>
         <button onClick={() => setPage(page + 1)}>Next</button>
       </div>
     </div>
   );
 }
+
+const styles = {
+    container: {
+      textAlign: "center",
+      padding: "20px",
+      position: "relative",
+    },
+    logoutButton: {
+      position: "absolute",
+      top: "10px",
+      right: "20px",
+      padding: "10px 15px",
+      fontSize: "16px",
+      backgroundColor: "#f44336",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+    },
+    title: {
+      fontSize: "50px",
+      marginBottom: "20px",
+    },
+    userContainer: {
+        display: "flex",
+        justifyContent: "center", // Center horizontally
+        alignItems: "center", // Center vertically
+        flexWrap: "wrap",
+        gap: "20px",
+        marginTop: "150px", 
+      },
+    userCard: {
+      width: "250px",
+      padding: "15px",
+      border: "1px solid #ddd",
+      borderRadius: "8px",
+      textAlign: "center",
+      backgroundColor: "#f9f9f9",
+    },
+    avatar: {
+      borderRadius: "50%",
+      width: "90px",
+      height: "90px",
+    },
+    pagination: {
+      marginTop: "30px",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "15px",
+    },
+    pageButton: {
+      padding: "10px 15px",
+      fontSize: "18px",
+      cursor: "pointer",
+      backgroundColor: "#007BFF",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+    },
+    pageText: {
+      fontSize: "20px",
+      fontWeight: "bold",
+    },
+  };
 
 export default UserList;
