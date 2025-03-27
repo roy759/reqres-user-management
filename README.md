@@ -61,9 +61,9 @@ Contributing
 If you’d like to contribute, feel free to fork the repo and submit a pull request.
 
 ## Live Demo  
-[Reqres User Management App](https://reqres-user-management-1myde935n-anik-roys-projects-f3b9b9dd.vercel.app)
+[Reqres User Management](https://reqres-user-management-one.vercel.app)
 
-Thank you
+Thank you !!
 
 License
 This project is licensed under the MIT License.
